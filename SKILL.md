@@ -95,6 +95,8 @@ After a context compaction, trust the ledger and `git log`, not memory. Never re
 - One full review per PR. Per-task reviews only for tasks flagged risky.
 - Re-reviews read only the fix diff and the open findings. Small mechanical fix diffs can use a cheaper reviewer.
 - Background runs: wait in bounded stretches, check the log tail, don't poll every few seconds.
+- Every detached run gets a watcher that notifies the orchestrator when it exits. Finished work must never sit idle waiting to be noticed.
+- Fix rounds run only the tests covering the changed code. The full regression set and performance audits run once, right before the report to the owner.
 
 ## Receiving review (engineer and orchestrator)
 
