@@ -1,0 +1,26 @@
+flowchart TD
+    A[Request] --> B[1. Requirements<br/>orchestrator writes spec,<br/>asks only blocking questions]
+    B --> C[2. Architect plan<br/>most capable model]
+    C --> D{Big or risky?<br/>auth, payments, data,<br/>migrations, deletes, infra}
+    D -- risky --> E[Owner approves plan]
+    D -- routine --> F
+    E --> F[3. Engineer<br/>cheaper model, project context<br/>worktree, code, tests, commits]
+    F --> R{Task flagged risky?}
+    R -- risky task --> TR[Per-task architect review]
+    TR --> F
+    R -- all tasks done --> G[4. Architect review of the PR<br/>reads spec, plan, diff package]
+    G --> H{Verdict}
+    H -- Request Changes --> I[5. One fix round<br/>engineer fixes all blockers and should-fix,<br/>may push back with evidence]
+    I --> J[Scoped re-review<br/>open findings + fix diff only]
+    J --> K{All addressed?}
+    K -- open, round 1-2 --> I
+    K -- open after round 3 --> L[Escalate to owner<br/>open findings, both sides,<br/>recommendation]
+    K -- all addressed --> M
+    H -- Approve --> M[6. Testing<br/>typecheck, unit, real DB, end-to-end,<br/>screenshots light/dark, desktop/phone, speed]
+    M --> N{Bugs?}
+    N -- bug found --> I
+    N -- clean --> O[8. Report to owner<br/>PR, pass counts, screenshots,<br/>review history, rulings, open points]
+    L --> O
+    O --> P{Owner}
+    P -- merge / deploy --> Q[Done]
+    P -- changes --> B

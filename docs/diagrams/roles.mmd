@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant W as Owner
+    participant O as Orchestrator
+    participant A as Architect (most capable model)
+    participant E as Engineer (cheaper model)
+    participant G as Git host
+
+    W->>O: request
+    O->>W: blocking questions (if any)
+    O->>A: spec file
+    A-->>O: plan file
+    opt big or risky
+        O->>W: plan summary
+        W-->>O: approve
+    end
+    O->>E: brief file (plan path, constraints)
+    E->>G: commits, PR
+    E-->>O: report file (changes, test counts)
+    O->>A: review package (diff as a file)
+    A-->>O: verdict + findings
+    O->>G: review comment
+    loop until approved, max 3 rounds
+        O->>E: open findings
+        E->>G: fix commits
+        O->>A: fix diff + findings
+        A-->>O: ADDRESSED / NOT ADDRESSED
+    end
+    O->>W: PR, evidence, rulings, next decision
