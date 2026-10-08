@@ -116,6 +116,8 @@ No "done", "passes", or "fixed" without a fresh command run and its output in th
 - Review sessions need a turn budget of 30-40, or they stop mid-read and return nothing useful.
 - The reviewer must read surrounding files, not just the diff. Name the key files in the prompt.
 - Hosting platforms usually won't let a PR author request changes on their own PR. Post verdicts as comments.
+- A read-only reviewer still needs permission to write its own output file. Grant edit access to that one path (check how your CLI names file-write rules), or capture stdout and strip everything before the verdict line.
+- Before and after any local test server, check that its ports are free. A stale server from an earlier build answers instead of the new one, and an agent can spend an hour "fixing" code that works.
 
 ## Credits
 
