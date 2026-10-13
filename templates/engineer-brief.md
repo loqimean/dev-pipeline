@@ -26,7 +26,7 @@ Rules:
   "Ruling: <what> — <why> — <cost if wrong>".
 - If the plan is wrong or blocks you, write BLOCKED with the reason in the
   report and stop that task; don't guess at scope.
-- Open the PR at the end and attach screenshots for UI changes.
+- Open the PR at the end and attach screenshots for UI changes: full-viewport (desktop and phone), light theme, in the PR description only. No element crops; check that the shown elements are fully inside the frame.
 - Don't deploy, don't merge.
 
 Final reply (short): status DONE | DONE_WITH_CONCERNS | BLOCKED, commit

@@ -62,7 +62,9 @@ Local setup (which tools and models fill each role, commit identity) lives in `c
 
 - Scripts, not model calls: typecheck, unit tests, builds, browser end-to-end suites, real DB checks where data or auth changed. The model reads only pass/fail summaries and failure lines.
 - Regression: every existing suite for the touched area, plus a production-like build.
-- UI changes: screenshots in light and dark, desktop and phone. One visual check per screen on the final version, not per iteration.
+- UI changes: screenshots in the light theme only, desktop and phone, unless the change is about the dark theme itself. One visual check per screen on the final version, not per iteration.
+- Screenshots must be full-viewport captures (e.g. 1440x900 desktop, 390x844 phone), never element crops (`locator.screenshot()`, `clip`). A cropped dialog or a 64 px header strip proves nothing: the reader can't see where the element sits, what's around it, or whether it's cut off. Before attaching, check that every element the shot is meant to show is fully inside the frame (bounding box within the viewport, no ellipsis, no clipping).
+- Screenshots go only in the PR description, never in comments.
 - Speed-sensitive pages: performance audit before vs after.
 
 ### 7. Bugs found in testing
