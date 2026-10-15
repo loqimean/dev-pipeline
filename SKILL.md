@@ -66,6 +66,7 @@ Local setup (which tools and models fill each role, commit identity) lives in `c
 - Screenshots must be full-viewport captures (e.g. 1440x900 desktop, 390x844 phone), never element crops (`locator.screenshot()`, `clip`). A cropped dialog or a 64 px header strip proves nothing: the reader can't see where the element sits, what's around it, or whether it's cut off. Before attaching, check that every element the shot is meant to show is fully inside the frame (bounding box within the viewport, no ellipsis, no clipping).
 - Screenshots go only in the PR description, never in comments.
 - Shared test machine: never kill browsers or servers globally (`pkill -f chrome-headless-shell`, `pkill node`, `killall`). Other runs use the same host. Kill only the PIDs you started, or whatever listens on your own assigned ports.
+- Keep QA tooling (test scripts, ledgers, review files) in a persistent directory, never in plain `/tmp`: macOS wipes `/tmp` on reboot. On the Mac mini it's `/Users/mm-master/qa`, with `/tmp/qa` as a symlink. Recreate the symlink after a reboot.
 - When checking a screenshot, also check placement, not just visibility: a dialog must be centred (or anchored to its trigger), not stuck to a viewport corner. "Fully inside the frame" isn't enough; assert the position in tests too.
 - Speed-sensitive pages: performance audit before vs after.
 
