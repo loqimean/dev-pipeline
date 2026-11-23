@@ -2,7 +2,7 @@
 
 A process for building features and fixes with AI agents: separate roles, an architect review loop, and evidence before anything is called done.
 
-The agent skill is [SKILL.md](SKILL.md). Diagram sources are in [docs/diagrams/](docs/diagrams); after editing one, re-render the PNGs. Prompt templates are in [templates/](templates), the helper script is in [scripts/](scripts), and [config.example.md](config.example.md) shows the local setup.
+The agent skill is [SKILL.md](SKILL.md). Diagram sources are in [docs/diagrams/](docs/diagrams); after editing one, re-render the PNGs. Prompt templates are in [templates/](templates), helper scripts are in [scripts/](scripts), extra recipes in [references/](references), and [config.example.md](config.example.md) shows the local setup.
 
 ## Flow
 
